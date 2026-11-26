@@ -1,0 +1,354 @@
+
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BAKAS:Mga alaala ng Tatlong Panahon</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Playfair+Display&display=swap');
+
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;background:#21170f;color:#f2dfbd;font-family:Georgia,serif}
+header{
+ min-height:85vh;
+ display:grid;
+ place-items:center;
+ text-align:center;
+ padding:25px;
+ background:linear-gradient(#160e0ac9,#160e0ac9),url('https://img//pilipinas.jpeg/photo-1519681393784-d120267933ba?w=1500') center/cover;
+}
+h1{font:clamp(35px,8vw,75px) Cinzel,serif;color:#eacb91}
+header p{font-style:italic;font-size:20px}
+button{cursor:pointer}
+nav{position:sticky;top:0;background:#160e0a;padding:14px;text-align:center;z-index:10;border-bottom:1px solid #b68b50}
+nav button{margin:4px}
+.btn{background:#70452a;color:white;border:1px solid #c49b60;padding:12px 16px;border-radius:3px}
+.btn:hover{background:#a16c39}
+section{padding:45px 7%;max-width:1100px;margin:auto}
+h2{font:26px Cinzel,serif;color:#eacb91}
+.card{background:#ead9b8;color:#302015;padding:22px;margin:15px 0;border:4px double #946d3e;border-radius:3px}
+.card h3{font:21px Cinzel,serif}
+.card p{line-height:1.8}
+.hidden{display:none}
+.timeline button{width:100%;text-align:left;margin:6px 0}
+.details{display:none;background:#fff0d3;color:#302015;padding:15px;line-height:1.8}
+.details.show{display:block}
+#facts{background:#3c2819;padding:25px;text-align:center;border:1px solid #c49b60}
+.person{display:inline-block;vertical-align:top;width:220px;max-width:100%;margin:8px}
+footer{text-align:center;padding:35px;background:#160e0a;color:#d8bd91}
+label{display:block;margin:12px 0}
+.quiz-question{border-bottom:1px solid #bba17b;padding:12px 0}
+</style>
+</head>
+
+<body>
+
+<header>
+<div>
+<p>✦ AN INTERACTIVE JOURNEY  THROUGH PHILIPPINE HISTORY✦</p>
+<h1>BAGO ANG <br>KALAYAAN</h1>
+<p>Mga Lihim,Sakripisyo,at kuwento ng Tatlong Panahon.</p>
+<button class="btn" onclick="document.getElementById('chapters').scrollIntoView()">EXPLORE HISTORY →</button>
+</div>
+</header>
+
+<nav>
+<button class="btn" onclick="toggleMusic()" id="music">♫ PLAY MUSIC</button>
+<button class="btn" onclick="go('chapters')">CHAPTERS</button>
+<button class="btn" onclick="go('facts')">FACTS</button>
+<button class="btn" onclick="go('quiz')">QUIZ</button>
+</nav>
+
+<section id="chapters">
+<h2>THE HISTORICAL CHAPTERS</h2>
+<p>Pumili ng panahon upang buksan ang historical archive.</p>
+
+<button class="btn" onclick="chapter('spanish')">SPANISH PERIOD</button>
+<button class="btn" onclick="chapter('american')">AMERICAN PERIOD</button>
+<button class="btn" onclick="chapter('japanese')">JAPANESE PERIOD</button>
+</section>
+
+<section id="spanish" class="chapter hidden">
+<div class="card">
+<h2>CHAPTER I: PANAHON NG ESPANYOL</h2>
+<p><b>1565–1898</b></p>
+<p>Nagsimula ang permanenteng kolonyal na pamamahala ng Espanya noong 1565. Nagkaroon ng malaking pagbabago sa relihiyon, pamahalaan, ekonomiya, at kultura ng mga Pilipino.</p>
+<h3>Mga Institusyon ng Pamahalaan</h3>
+<ul>
+<li>Ministerio de Ultramar – namahala sa mga kolonya.</li>
+<li>Gobernador-Heneral – pinakamataas na opisyal.</li>
+<li>Royal Audiencia – pinakamataas na hukuman.</li>
+<li>Alcalde-Mayor – pinuno ng probinsya.</li>
+<li>Gobernadorcillo – pinuno ng bayan.</li>
+<li>Ayuntamiento – pamahalaang lungsod.</li>
+</ul>
+<h3>Mga Isyung Pang-ekonomiya</h3>
+<ul>
+<li>Polo y servicio – sapilitang paggawa.</li>
+<li>Tributo – buwis na ipinapataw sa mga Pilipino.</li>
+<li>Encomienda – sistemang pagkakaloob ng karapatang mangolekta ng tributo.</li>
+<li>Kalakalang Galyon – kalakalan sa pagitan ng Maynila at Acapulco.</li>
+<li>Monopolyo – kontrol ng pamahalaan sa produksyon at bentahan ng ilang produkto.</li>
+</ul>
+<h3>Kamalayang Pilipino</h3>
+<p>Ang mga ilustrado gaya nina José Rizal, Graciano López Jaena, at Marcelo H. del Pilar ay gumamit ng panitikan upang ipahayag ang pangangailangan ng reporma at katarungan.</p>
+</div>
+
+<h2>CLICKABLE TIMELINE</h2>
+<div id="timelineSpanish" class="timeline"></div>
+
+<h2>HISTORICAL PERSONALITIES</h2>
+<div id="peopleSpanish"></div>
+</section>
+
+<section id="american" class="chapter hidden">
+<div class="card">
+<h2>CHAPTER II: PANAHON NG AMERIKANO</h2>
+<p><b>1898–1946</b></p>
+<p>Nagsimula ang pamamahalang Amerikano matapos ang Kasunduan sa Paris noong 1898. Nagkaroon ng pagbabago sa edukasyon, pamahalaan, transportasyon, at kultura.</p>
+<h3>Mahahalagang Pangyayari</h3>
+<ul>
+<li>Kasunduan sa Paris (1898) – paglilipat ng Pilipinas sa Estados Unidos.</li>
+<li>Digmaang Pilipino-Amerikano (1899–1902) – pakikibaka para sa kalayaan.</li>
+<li>Thomasites (1901) – mga gurong Amerikano na nagturo sa Pilipinas.</li>
+<li>Jones Law (1916) – pagpapalawak ng partisipasyon ng mga Pilipino sa pamahalaan.</li>
+<li>Tydings-McDuffie Act (1934) – nagtakda ng transisyon patungo sa kalayaan.</li>
+<li>Commonwealth (1935) – pamahalaang transisyon sa ilalim ni Manuel L. Quezon.</li>
+<li>Independence (1946) – pagkilala sa kalayaan ng Pilipinas.</li>
+</ul>
+<h3>Kalagayan ng Kababaihan</h3>
+<p>Lumawak ang pagkakataon ng kababaihan sa edukasyon at trabaho. Nagsimula rin ang mas organisadong pakikibaka para sa karapatang bumoto.</p>
+<h3>Mga Kababaihang Nanguna</h3>
+<ul>
+<li>Concepcion Felix de Calderón</li>
+<li>Pura Villanueva Kalaw</li>
+<li>Rosa Sevilla de Alvero</li>
+<li>Encarnacion Alzona</li>
+</ul>
+</div>
+<h2>CLICKABLE TIMELINE</h2>
+<div id="timelineAmerican" class="timeline"></div>
+<h2>HISTORICAL PERSONALITIES</h2>
+<div id="peopleAmerican"></div>
+</section>
+
+<section id="japanese" class="chapter hidden">
+<div class="card">
+<h2>CHAPTER III: PANAHON NG HAPONES</h2>
+<p><b>1941–1945</b></p>
+<p>Naganap ang pananakop ng Hapon sa Pilipinas noong Ikalawang Digmaang Pandaigdig. Naranasan ng mga Pilipino ang matinding kontrol sa lipunan, pamahalaan, edukasyon, at ekonomiya.</p>
+<h3>Kalagayan ng Lipunan</h3>
+<p>Nagkaroon ng kakulangan sa pagkain, sapilitang paggawa, at paghihirap ng mga pamilya.</p>
+<h3>Politika at Pamahalaan</h3>
+<p>Itinatag ang puppet government at Kalibapi. Nasa ilalim ng kontrol ng mga Hapones ang mga pangunahing desisyon ng pamahalaan.</p>
+<h3>Edukasyon at Relihiyon</h3>
+<p>Ipinatupad ang Nihonggo sa mga paaralan. Kinontrol ang mga publikasyon at ilang gawaing panrelihiyon.</p>
+<h3>Ekonomiya</h3>
+<ul>
+<li>Rationing – kontroladong pamamahagi ng pagkain at suplay.</li>
+<li>Mickey Mouse money – perang mabilis nawalan ng halaga.</li>
+<li>Black market – lihim na pamilihan.</li>
+</ul>
+<h3>Kababaihan at Kabataan</h3>
+<p>May mga kababaihang tumulong sa mga gerilya at komunidad. May mga kabataang naging tagapagdala ng impormasyon at suplay.</p>
+<h3>Wika, Sining at Panitikan</h3>
+<p>Ginamit ang tula, awit, dula, at lihim na pahayagan upang mapanatili ang diwang makabayan.</p>
+</div>
+<h2>CLICKABLE TIMELINE</h2>
+<div id="timelineJapanese" class="timeline"></div>
+</section>
+
+<section id="facts">
+<h2>DID YOU KNOW?</h2>
+<h3 id="factTitle">Historical Fact</h3>
+<p id="factText">Pindutin ang button upang tumuklas ng kaalaman!</p>
+<button class="btn" onclick="newFact()">DISCOVER FACT →</button>
+</section>
+
+<section id="quiz">
+<h2>HISTORIAN'S CHALLENGE</h2>
+<div class="card">
+<div id="questions"></div>
+<button class="btn" onclick="checkQuiz()">SUBMIT ANSWERS</button>
+<h3 id="score"></h3>
+</div>
+</section>
+
+<footer>
+<h3>THE PHILIPPINE CHRONICLES</h3>
+<p>REMEMBER THE PAST. SHAPE THE FUTURE.</p>
+<p>Interactive Digital History Project</p>
+</footer>
+
+<script>
+function go(id){
+ document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+
+function chapter(id){
+ document.querySelectorAll('.chapter').forEach(x=>x.classList.add('hidden'));
+ document.getElementById(id).classList.remove('hidden');
+ document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+
+const events={
+timelineSpanish:[
+["1521","Pagdating ni Magellan","Narating ng ekspedisyon ni Ferdinand Magellan ang kapuluan."],
+["1565","Legazpi","Nagsimula ang permanenteng kolonyal na pamamahala ng Espanya."],
+["1872","GOMBURZA","Binitay sina Gómez, Burgos, at Zamora."],
+["1892","Katipunan","Itinatag ang samahan para sa kalayaan."],
+["1896","Himagsikan","Nagsimula ang malawakang rebolusyon."],
+["1898","Kalayaan","Ipinahayag ang kalayaan noong Hunyo 12."]
+],
+timelineAmerican:[
+["1898","Kasunduan sa Paris","Ipinasa ng Espanya ang Pilipinas sa Estados Unidos."],
+["1899","Digmaang Pilipino-Amerikano","Nagsimula ang digmaan noong Pebrero 4."],
+["1901","Thomasites","Dumating ang mga gurong Amerikano."],
+["1916","Jones Law","Pinalawak ang partisipasyon ng mga Pilipino sa pamahalaan."],
+["1934","Tydings-McDuffie Act","Inihanda ang proseso patungo sa kalayaan."],
+["1935","Commonwealth","Naging pangulo si Manuel L. Quezon."],
+["1946","Independence","Kinilala ang kalayaan ng Pilipinas."]
+],
+timelineJapanese:[
+["1941","Japanese invasion","Nagsimula ang pananakop ng Hapon."],
+["1942","Fall of Bataan","Bumagsak ang Bataan."],
+["1943","Second Republic","Itinatag ang Ikalawang Republika."],
+["1944","Leyte Landing","Bumalik ang Allied forces sa Pilipinas."],
+["1945","Liberation","Pinalaya ang Maynila at iba pang bahagi ng bansa."]
+]
+};
+
+function buildTimeline(id,data){
+ const target=document.getElementById(id);
+ data.forEach(item=>{
+  const box=document.createElement('div');
+  box.className='card';
+  const btn=document.createElement('button');
+  btn.className='btn';
+  btn.textContent=item[0]+' — '+item[1];
+  const detail=document.createElement('div');
+  detail.className='details';
+  detail.textContent=item[2];
+  btn.onclick=()=>detail.classList.toggle('show');
+  box.appendChild(btn);
+  box.appendChild(detail);
+  target.appendChild(box);
+ });
+}
+buildTimeline('timelineSpanish',events.timelineSpanish);
+buildTimeline('timelineAmerican',events.timelineAmerican);
+buildTimeline('timelineJapanese',events.timelineJapanese);
+
+const people=[
+["José Rizal","May-akda ng Noli Me Tangere at El Filibusterismo."],
+["Andrés Bonifacio","Isa sa mga nagtatag ng Katipunan."],
+["Emilio Aguinaldo","Nagpahayag ng kalayaan noong Hunyo 12, 1898."],
+["Manuel L. Quezon","Pangulo ng Commonwealth."],
+["Pura Villanueva Kalaw","Nagsulong ng karapatang bumoto ng kababaihan."]
+];
+
+function buildPeople(id,list){
+ const target=document.getElementById(id);
+ list.forEach(p=>{
+  const card=document.createElement('div');
+  card.className='card person';
+  const title=document.createElement('h3');
+  title.textContent=p[0];
+  const text=document.createElement('p');
+  text.textContent=p[1];
+  card.append(title,text);
+  target.appendChild(card);
+ });
+}
+buildPeople('peopleSpanish',people.slice(0,3));
+buildPeople('peopleAmerican',people.slice(3));
+
+const facts=[
+["The Katipunan","Itinatag noong Hulyo 7, 1892."],
+["GOMBURZA","Binitay noong Pebrero 17, 1872."],
+["Thomasites","Dumating ang mga gurong Amerikano noong 1901."],
+["Commonwealth","Pinasinayaan noong Nobyembre 15, 1935."],
+["Mickey Mouse Money","Tawag sa perang Hapones na mabilis nawalan ng halaga."]
+];
+let factIndex=0;
+function newFact(){
+ const f=facts[factIndex%facts.length];
+ document.getElementById('factTitle').textContent=f[0];
+ document.getElementById('factText').textContent=f[1];
+ factIndex++;
+}
+
+const quiz=[
+["Sino ang sumulat ng Noli Me Tangere?",["José Rizal","Bonifacio","Quezon"],0],
+["Kailan itinatag ang Katipunan?",["1872","1892","1898"],1],
+["Sino ang unang pangulo ng Commonwealth?",["Aguinaldo","Quezon","Osmeña"],1],
+["Kailan nagsimula ang pananakop ng Hapon?",["1935","1941","1946"],1],
+["Ano ang tawag sa perang Hapones?",["Tributo","Mickey Mouse money","Galyon"],1]
+];
+const qbox=document.getElementById('questions');
+quiz.forEach((q,i)=>{
+ const div=document.createElement('div');
+ div.className='quiz-question';
+ const p=document.createElement('p');
+ p.textContent=(i+1)+'. '+q[0];
+ div.appendChild(p);
+ q[1].forEach((answer,j)=>{
+  const label=document.createElement('label');
+  const radio=document.createElement('input');
+  radio.type='radio';
+  radio.name='q'+i;
+  radio.value=j;
+  label.append(radio,document.createTextNode(' '+answer));
+  div.appendChild(label);
+ });
+ qbox.appendChild(div);
+});
+function checkQuiz(){
+ let score=0;
+ quiz.forEach((q,i)=>{
+  const answer=document.querySelector('input[name="q'+i+'"]:checked');
+  if(answer&&Number(answer.value)===q[2])score++;
+ });
+ document.getElementById('score').textContent='YOUR SCORE: '+score+'/'+quiz.length;
+}
+
+/* ORIGINAL BACKGROUND MUSIC */
+let audio=null,playing=false,timer=null,note=0;
+function toggleMusic(){
+ const btn=document.getElementById('music');
+ if(playing){
+  clearInterval(timer);
+  playing=false;
+  btn.textContent='♫ PLAY MUSIC';
+  return;
+ }
+ const AC=window.AudioContext||window.webkitAudioContext;
+ if(!AC){alert('Audio is not supported.');return;}
+ if(!audio)audio=new AC();
+ audio.resume();
+ playing=true;
+ btn.textContent='Ⅱ PAUSE MUSIC';
+ const melody=[261.63,329.63,392,329.63,293.66,349.23,440,392];
+ function play(){
+  if(!playing)return;
+  const osc=audio.createOscillator();
+  const gain=audio.createGain();
+  osc.type='sine';
+  osc.frequency.value=melody[note%melody.length];
+  gain.gain.setValueAtTime(.0001,audio.currentTime);
+  gain.gain.exponentialRampToValueAtTime(.025,audio.currentTime+.08);
+  gain.gain.exponentialRampToValueAtTime(.0001,audio.currentTime+.6);
+  osc.connect(gain);
+  gain.connect(audio.destination);
+  osc.start();
+  osc.stop(audio.currentTime+.65);
+  note++;
+ }
+ play();
+ timer=setInterval(play,650);
+}
+</script>
+</body>
+</html>
